@@ -1,5 +1,6 @@
 import { AiOutlineMenu } from 'react-icons/ai';
 import NotificationDropDown from './../../components/dropdown/NotificationDropDown';
+import ProfileDropDown from './../../components/dropdown/ProfileDropDown';
 
 const Header = () => {
     return (
@@ -14,7 +15,7 @@ const Header = () => {
                     <NotificationDropDown />
                 </div>
                 <div>
-                    Profile
+                    <ProfileDropDown />
                 </div>
             </div>
         </div>
