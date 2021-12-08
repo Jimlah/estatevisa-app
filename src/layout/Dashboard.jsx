@@ -1,6 +1,6 @@
 import Navbar from './partials/NavBar';
 import Header from './partials/Header';
-import Table from './../components/Tables/Table';
+import { Outlet } from 'react-router-dom';
 
 const Dashboard = () => {
     return (
@@ -9,7 +9,7 @@ const Dashboard = () => {
             <main className="flex-1 w-full ">
                 <Header />
                 <div className="p-5 lg:p-10">
-                    <Table />
+                    <Outlet />
                 </div>
             </main>
         </div>

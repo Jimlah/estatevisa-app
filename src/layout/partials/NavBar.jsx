@@ -22,10 +22,10 @@ const Navbar = (props) => {
                 <h2 className="pl-3 mb-3 text-xs font-bold text-gray-500 uppercase">Pages</h2>
                 <ul className="flex flex-col space-y-1">
                     <li className="">
-                        <NavLink path="/" name="Dashboard" Icon={MdDashboard} smallBar={smallBar} />
+                        <NavLink path="/dashboard" name="Dashboard" Icon={MdDashboard} smallBar={smallBar} />
                     </li>
                     <li>
-                        <NavLink path="/estates" name="Estates" Icon={MdDashboard} smallBar={smallBar} />
+                        <NavLink path="/dashboard/estates" name="Estates" Icon={MdDashboard} smallBar={smallBar} />
                     </li>
                 </ul>
             </div>
