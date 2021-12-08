@@ -1,5 +1,6 @@
 import Navbar from './partials/NavBar';
 import Header from './partials/Header';
+import Table from './../components/Tables/Table';
 
 const Dashboard = () => {
     return (
@@ -7,7 +8,9 @@ const Dashboard = () => {
             <Navbar />
             <main className="flex-1 w-full ">
                 <Header />
-                main
+                <div className="p-5 lg:p-10">
+                    <Table />
+                </div>
             </main>
         </div>
     )
