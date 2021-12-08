@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Profile = () => {
     return (
         <div className="flex items-center space-x-1">
-            <span className="p-2 bg-gray-900 rounded-full" F>
+            <span className="p-2 bg-gray-700 rounded-full" F>
                 <FaUserAlt className="w-4 h-4 text-purple-500" />
             </span>
             <span className="text-sm font-semibold">

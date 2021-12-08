@@ -3,8 +3,8 @@ import { FiMessageSquare } from 'react-icons/fi';
 
 const NotificationIcon = () => {
     return (
-        <span className="relative flex items-center justify-center text-purple-500 outline-none hover:text-purple-600 focus:outline-none">
-            <FiMessageSquare className="w-6 h-6" />
+        <span className="relative flex items-center justify-center p-1.5 text-purple-500 bg-gray-700 rounded-full outline-none hover:text-purple-600 focus:outline-none ">
+            <FiMessageSquare className="w-5 h-5 fill-current" />
         </span>
     )
 }
