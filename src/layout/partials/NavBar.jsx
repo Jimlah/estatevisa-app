@@ -25,13 +25,13 @@ const Navbar = (props) => {
                         <NavLink path="/" name="Dashboard" Icon={MdDashboard} smallBar={smallBar} />
                     </li>
                     <li>
-                        <NavLink path="/" name="Estates" Icon={MdDashboard} smallBar={smallBar} />
+                        <NavLink path="/estates" name="Estates" Icon={MdDashboard} smallBar={smallBar} />
                     </li>
                 </ul>
             </div>
             <div className={`flex px-3 ${smallBar ? "" : "justify-end"}`}>
                 <button className="text-gray-500" onClick={handleSmallBar}>
-                    <BsArrowBarLeft className={`h-6 w-6 hover:text-gray-300 transformation ${ smallBar ? "rotate-180" : "" }`} />
+                    <BsArrowBarLeft className={`h-6 w-6 hover:text-gray-300 transformation ${smallBar ? "rotate-180" : ""}`} />
                 </button>
             </div>
         </nav>
