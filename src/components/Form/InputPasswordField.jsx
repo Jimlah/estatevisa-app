@@ -14,9 +14,9 @@ const InputPasswordField = ({ label, name, error, ...props }) => {
     }
 
     return (
-        <div className="relative">
+        <div className="relative w-full">
             <InputField label={label} name={name} error={error} type={showPassword ? 'password' : 'text'} {...rest} />
-            <button type="button" className="absolute top-0 right-0 mt-3" onClick={handleShowPassword}>
+            <button type="button" className="absolute bottom-0 right-0 mb-7" onClick={handleShowPassword}>
                 {
                     showPassword ? <AiFillEyeInvisible className="w-6 h-6 text-gray-500 " /> : <AiFillEye className="w-6 h-6 text-gray-500 " />
                 }
