@@ -4,7 +4,7 @@ import { useState } from 'react';
 import NavLink from '../../components/ungrouped/NavLink';
 import { RiAdminFill } from 'react-icons/ri'
 import { AiFillCar } from 'react-icons/ai'
-import {GiOpenGate} from 'react-icons/gi'
+import { GiOpenGate } from 'react-icons/gi'
 
 const Navbar = (props) => {
 
