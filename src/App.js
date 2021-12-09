@@ -8,6 +8,7 @@ import EstateCreate from './pages/Estate/EstateCreate';
 import Login from './pages/Auth/Login';
 import Auth from './pages/Auth/Auth';
 import ForgetPassword from './pages/Auth/ForgetPassword';
+import Estate from './pages/Estate/Estate';
 
 function App() {
   return (
@@ -16,13 +17,16 @@ function App() {
         <Route path="/" element={<Wrapper />} >
           <Route index element={<div>Main </div>} />
           <Route path="auth" element={<Auth />}>
+            <Route index element={<Login />} />
             <Route path="login" element={<Login />} />
             <Route path="forget-password" element={<ForgetPassword />} />
           </Route>
           <Route path="dashboard" element={<Dashboard />} >
             <Route index element={<DashboardIndex />} />
-            <Route path="estates" element={<EstateIndex />} />
-            <Route path="estates/create" element={<EstateCreate />} />
+            <Route path="estates" element={<Estate />} >
+              <Route index element={<EstateIndex />} />
+              <Route path="create" element={<EstateCreate />} />
+            </Route>
           </Route>
         </Route>
         <Route path="*" element={<div>404</div>} />

@@ -1,7 +1,10 @@
-import { MdShield, MdDashboard } from 'react-icons/md';
-import { BsArrowBarLeft } from 'react-icons/bs';
+import { MdShield, MdDashboard, MdRealEstateAgent } from 'react-icons/md';
+import { BsArrowBarLeft, BsFillHouseDoorFill } from 'react-icons/bs';
 import { useState } from 'react';
 import NavLink from '../../components/ungrouped/NavLink';
+import { RiAdminFill } from 'react-icons/ri'
+import { AiFillCar } from 'react-icons/ai'
+import {GiOpenGate} from 'react-icons/gi'
 
 const Navbar = (props) => {
 
@@ -25,7 +28,19 @@ const Navbar = (props) => {
                         <NavLink path="/dashboard" name="Dashboard" Icon={MdDashboard} smallBar={smallBar} />
                     </li>
                     <li>
-                        <NavLink path="/dashboard/estates" name="Estates" Icon={MdDashboard} smallBar={smallBar} />
+                        <NavLink path="/dashboard/estates" name="Estates" Icon={MdRealEstateAgent} smallBar={smallBar} />
+                    </li>
+                    <li>
+                        <NavLink path="/dashboard/admins" name="Admins" Icon={RiAdminFill} smallBar={smallBar} />
+                    </li>
+                    <li>
+                        <NavLink path="/dashboard/houses" name="Houses" Icon={BsFillHouseDoorFill} smallBar={smallBar} />
+                    </li>
+                    <li>
+                        <NavLink path="/dashboard/visitors" name="Visitors" Icon={GiOpenGate} smallBar={smallBar} />
+                    </li>
+                    <li>
+                        <NavLink path="/dashboard/visitors" name="Vehicles" Icon={AiFillCar} smallBar={smallBar} />
                     </li>
                 </ul>
             </div>
