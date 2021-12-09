@@ -2,7 +2,7 @@ import { MdAdd } from "react-icons/md";
 import Table from "../../components/Tables/Table";
 import { Link } from 'react-router-dom';
 
-const EstateIndex = () => {
+const AdminIndex = () => {
     return (
         <div className="w-full h-full" >
             <div className="flex items-center mb-5">
@@ -13,9 +13,9 @@ const EstateIndex = () => {
                     </span>
                 </Link>
             </div>
-            <Table title="List of Estates" />
+            <Table title="List of Admins" />
         </div>
     )
 }
 
-export default EstateIndex;
+export default AdminIndex;

@@ -9,6 +9,9 @@ import Login from './pages/Auth/Login';
 import Auth from './pages/Auth/Auth';
 import ForgetPassword from './pages/Auth/ForgetPassword';
 import Estate from './pages/Estate/Estate';
+import Admin from './pages/Admin/Admin';
+import AdminCreate from './pages/Admin/AdminCreate';
+import AdminIndex from './pages/Admin/AdminIndex';
 
 function App() {
   return (
@@ -26,6 +29,10 @@ function App() {
             <Route path="estates" element={<Estate />} >
               <Route index element={<EstateIndex />} />
               <Route path="create" element={<EstateCreate />} />
+            </Route>
+            <Route path="admins" element={<Admin />} >
+              <Route index element={<AdminIndex />} />
+              <Route path="create" element={<AdminCreate />} />
             </Route>
           </Route>
         </Route>
