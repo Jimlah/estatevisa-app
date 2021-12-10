@@ -12,10 +12,12 @@ import Estate from './pages/Estate/Estate';
 import Admin from './pages/Admin/Admin';
 import AdminCreate from './pages/Admin/AdminCreate';
 import AdminIndex from './pages/Admin/AdminIndex';
+import ToastNotification from './components/ungrouped/ToastNotification';
 
 function App() {
   return (
     <BrowserRouter>
+      <ToastNotification />
       <Routes>
         <Route path="/" element={<Wrapper />} >
           <Route index element={<div>Main </div>} />

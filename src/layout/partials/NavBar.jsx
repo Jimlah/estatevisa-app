@@ -23,7 +23,7 @@ const Navbar = (props) => {
             </div>
             <div className="flex-1">
                 <h2 className="pl-3 mb-3 text-xs font-bold text-gray-500 uppercase">Pages</h2>
-                <ul className="flex flex-col space-y-1">
+                <ul className="flex flex-col space-y-2">
                     <li className="">
                         <NavLink path="/dashboard" name="Dashboard" Icon={MdDashboard} smallBar={smallBar} />
                     </li>
