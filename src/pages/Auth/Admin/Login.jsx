@@ -1,27 +1,35 @@
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaCircleNotch } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import InputPasswordField from './../../../components/Form/InputPasswordField';
 import InputField from './../../../components/Form/InputField';
 import { loginUser } from './../../../services/AuthSlice';
+import { useEffect } from 'react';
 
 
 const Login = () => {
 
-    const { loading, error } = useSelector(state => state.auth);
+    const { loading, error, user } = useSelector(state => state.auth);
     const { register, handleSubmit } = useForm();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-    // const [values, setValues] = useForm(initialState);
-
-    const onSubmit = data => {
+    const onSubmit = (data) => {
         dispatch(loginUser({
             path: "admin/login",
             payload: data
         }))
     }
+
+    useEffect(() => {
+        if (user) {
+            navigate("/manager/admin/dashboard")
+        }
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [user]);
 
     return (
 

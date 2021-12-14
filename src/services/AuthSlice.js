@@ -8,7 +8,7 @@ export const loginUser = createAsyncThunk(
         try {
             const response = await http.post(`/${data.path}`, JSON.stringify(data.payload));
             if (response?.data.status === 'success') {
-                dispatch(showToast({ message: 'Login Successful', type: 'success' }));
+                dispatch(showToast({ message: response?.data.message, type: response?.data.status }));
                 return response.data;
             }
             return rejectWithValue(response.data);
@@ -46,13 +46,13 @@ export const authSlice = createSlice({
         loading: false,
         error: null,
         user: null,
-        roles: null,
+        role: null,
         token: null,
     },
     reducers: {
         clearState: (state) => {
             state.user = null;
-            state.roles = null;
+            state.role = null;
             state.loading = false;
             state.error = null;
             state.token = null;
@@ -68,7 +68,7 @@ export const authSlice = createSlice({
             state.loading = false;
             state.user = action.payload?.user;
             state.error = null;
-            state.roles = action.payload?.role;
+            state.role = action.payload?.role;
         }
         ,
         [loginUser.rejected]: (state, action) => {
