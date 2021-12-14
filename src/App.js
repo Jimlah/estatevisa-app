@@ -4,9 +4,13 @@ import Wrapper from './pages/Main/Wrapper';
 import Login from './pages/Auth/Login';
 import ForgetPassword from './pages/Auth/ForgetPassword';
 import ToastNotification from './components/ungrouped/ToastNotification';
-import UserLogin from './pages/Auth/User/Login';
 import Auth from './pages/Auth/Auth';
+import UserLogin from './pages/Auth/User/Login';
+import ManagerLogin from './pages/Auth/Manager/Login';
+import AdminLogin from './pages/Auth/Admin/Login';
 import UserForgetPassword from './pages/Auth/User/ForgetPassword';
+import AdminForgetPassword from './pages/Auth/Admin/ForgetPassword';
+import ManagerForgetPassword from './pages/Auth/Manager/ForgetPassword';
 
 function App() {
   return (
@@ -35,10 +39,10 @@ function App() {
         <Route path="admin" >
           <Route path="auth" element={<Auth />} >
             <Route path="login" element={<Login />} >
-              <Route path="" element={<UserLogin />} />
+              <Route path="" element={<AdminLogin />} />
             </Route>
             <Route path="forget-password" element={<ForgetPassword />} >
-              <Route path="" element={<UserLogin />} />
+              <Route path="" element={<AdminForgetPassword />} />
             </Route>
           </Route>
         </Route>
@@ -49,10 +53,10 @@ function App() {
         <Route path="manager" >
           <Route path="auth" element={<Auth />} >
             <Route path="login" element={<Login />} >
-              <Route path="" element={<UserLogin />} />
+              <Route path="" element={<ManagerLogin />} />
             </Route>
             <Route path="forget-password" element={<ForgetPassword />} >
-              <Route path="" element={<UserLogin />} />
+              <Route path="" element={<ManagerForgetPassword />} />
             </Route>
           </Route>
         </Route>
