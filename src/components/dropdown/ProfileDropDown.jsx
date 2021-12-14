@@ -1,11 +1,13 @@
 import DropDownMenu from './DropDownMenu';
 import { FaUserAlt } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useMatch } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { logOutUser } from '../../services/AuthSlice';
 
 const Profile = () => {
     return (
         <div className="flex items-center space-x-1">
-            <span className="p-2 bg-gray-700 rounded-full" F>
+            <span className="p-2 bg-gray-700 rounded-full">
                 <FaUserAlt className="w-4 h-4 text-purple-500" />
             </span>
             <span className="text-sm font-semibold">
@@ -16,6 +18,27 @@ const Profile = () => {
 }
 
 const ProfileDropDown = () => {
+    const dispatch = useDispatch();
+
+    const userMatch = useMatch('/user/dashboard');
+    const managerMatch = useMatch('/manager/dashboard');
+    const adminMatch = useMatch('/admin/dashboard');
+
+    const handleLogout = () => {
+        if (userMatch) {
+            dispatch(logOutUser({ path: 'user/logout' }));
+        }
+
+        if (managerMatch) {
+            dispatch(logOutUser({ path: 'manager/logout' }));
+        }
+
+        if (adminMatch) {
+            dispatch(logOutUser({ path: 'admin/logout' }));
+        }
+
+    }
+
     return (
         <DropDownMenu menu={<Profile />}>
             <div>
@@ -23,11 +46,11 @@ const ProfileDropDown = () => {
                     <h3 className="text-sm font-bold tracking-wide">Abdullahi Jimoh</h3>
                     <p className="text-xs italic font-semibold text-gray-500">Administrator</p>
                 </div>
-                <div class="flex flex-col py-2 space-y-1">
+                <div className="flex flex-col py-2 space-y-1">
                     <Link to="/" className="font-semibold text-blue-700">
                         Profile
                     </Link>
-                    <button className="font-semibold text-blue-700 outline-none focus:outline-none hover:outline-none max-w-min whitespace-nowrap">
+                    <button onClick={handleLogout} className="font-semibold text-blue-700 outline-none focus:outline-none hover:outline-none max-w-min whitespace-nowrap">
                         Log Out
                     </button>
                 </div>

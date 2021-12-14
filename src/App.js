@@ -11,6 +11,7 @@ import AdminLogin from './pages/Auth/Admin/Login';
 import UserForgetPassword from './pages/Auth/User/ForgetPassword';
 import AdminForgetPassword from './pages/Auth/Admin/ForgetPassword';
 import ManagerForgetPassword from './pages/Auth/Manager/ForgetPassword';
+import Dashboard from './layout/Dashboard';
 
 function App() {
   return (
@@ -31,38 +32,42 @@ function App() {
               </Route>
             </Route>
           </Route>
-        </Route>
 
 
 
-        {/* Admin */}
-        <Route path="admin" >
-          <Route path="auth" element={<Auth />} >
-            <Route path="login" element={<Login />} >
-              <Route path="" element={<AdminLogin />} />
+
+
+          {/* Admin */}
+          <Route path="admin" >
+            <Route path="auth" element={<Auth />} >
+              <Route path="login" element={<Login />} >
+                <Route path="" element={<AdminLogin />} />
+              </Route>
+              <Route path="forget-password" element={<ForgetPassword />} >
+                <Route path="" element={<AdminForgetPassword />} />
+              </Route>
             </Route>
-            <Route path="forget-password" element={<ForgetPassword />} >
-              <Route path="" element={<AdminForgetPassword />} />
-            </Route>
-          </Route>
-        </Route>
-
-
-
-        {/* Manager */}
-        <Route path="manager" >
-          <Route path="auth" element={<Auth />} >
-            <Route path="login" element={<Login />} >
-              <Route path="" element={<ManagerLogin />} />
-            </Route>
-            <Route path="forget-password" element={<ForgetPassword />} >
-              <Route path="" element={<ManagerForgetPassword />} />
+            <Route path="dashboard" element={<Dashboard />} >
             </Route>
           </Route>
+
+
+
+          {/* Manager */}
+          <Route path="manager" >
+            <Route path="auth" element={<Auth />} >
+              <Route path="login" element={<Login />} >
+                <Route path="" element={<ManagerLogin />} />
+              </Route>
+              <Route path="forget-password" element={<ForgetPassword />} >
+                <Route path="" element={<ManagerForgetPassword />} />
+              </Route>
+            </Route>
+          </Route>
+
+
+
         </Route>
-
-
-
         <Route path="*" element={<div>404</div>} />
       </Routes>
     </BrowserRouter >

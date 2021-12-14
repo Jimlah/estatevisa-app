@@ -24,10 +24,10 @@ export const logOutUser = createAsyncThunk(
     'users/logout',
     async (data, { rejectWithValue, dispatch }) => {
         try {
-            const response = await http.get('/logout');
+            const response = await http.get(`/${data.path}`);
             if (response?.data?.status === 'success') {
-                dispatch(clearState());
                 dispatch(showToast({ message: response.data.message, type: response.data.type }));
+                dispatch(clearState());
                 return;
             }
             return rejectWithValue(response?.data);
@@ -69,6 +69,7 @@ export const authSlice = createSlice({
             state.user = action.payload?.user;
             state.error = null;
             state.role = action.payload?.role;
+            state.token = action.payload?.token;
         }
         ,
         [loginUser.rejected]: (state, action) => {
