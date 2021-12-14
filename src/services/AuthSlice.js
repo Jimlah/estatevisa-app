@@ -6,7 +6,7 @@ export const loginUser = createAsyncThunk(
     'users/login',
     async (data, { rejectWithValue, dispatch }) => {
         try {
-            const response = await http.post(`/${data.path}/login/`, JSON.stringify(data.payload));
+            const response = await http.post(`/${data.path}`, JSON.stringify(data.payload));
             if (response?.data.status === 'success') {
                 dispatch(showToast({ message: 'Login Successful', type: 'success' }));
                 return response.data;
