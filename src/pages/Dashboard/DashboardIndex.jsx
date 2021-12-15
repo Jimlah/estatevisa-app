@@ -30,24 +30,28 @@ const DashboardIndex = () => {
                     icon={<FiUsers className='h-6 w-6' />}
                     value={data.estate_count}
                     path={'/user'}
+                    color='blue'
                 />
                 <Board
                     title="User Count"
                     icon={<FiUsers className='h-6 w-6' />}
                     value={data.user_count}
                     path={'/user'}
+                    color='purple'
                 />
                 <Board
                     title="Manager Count"
                     icon={<FiUsers className='h-6 w-6' />}
                     value={data.manager_count}
                     path={'/user'}
+                    color='indigo'
                 />
                 <Board
                     title="Admin Count"
                     icon={<FiUsers className='h-6 w-6' />}
                     value={data.admin_count}
                     path={'/user'}
+                    color='violet'
                 />
             </div>
         </div>
