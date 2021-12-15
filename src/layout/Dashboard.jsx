@@ -3,7 +3,7 @@ import Header from './partials/Header';
 import { Outlet, useNavigate, useMatch } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import http from './../store/baseHttp';
+import http, { addBearerToken } from './../store/baseHttp';
 
 const Dashboard = () => {
 
@@ -11,17 +11,7 @@ const Dashboard = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        http.interceptors.request.use(
-            config => {
-                if (token) {
-                    config.headers.Authorization = `Bearer ${token}`;
-                }
-                return config;
-            },
-            error => {
-                return Promise.reject(error);
-            }
-        );
+        addBearerToken(token);
         // eslint-disable-next-line
     }, []);
 

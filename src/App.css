@@ -535,6 +535,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   display: table;
 }
 
+.grid {
+  display: grid;
+}
+
 .hidden {
   display: none;
 }
@@ -565,6 +569,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .h-8 {
   height: 2rem;
+}
+
+.h-32 {
+  height: 8rem;
+}
+
+.h-36 {
+  height: 9rem;
 }
 
 .w-full {
@@ -657,6 +669,10 @@ Ensure the default browser behavior of the `hidden` attribute.
           appearance: none;
 }
 
+.grid-cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .flex-col {
   flex-direction: column;
 }
@@ -683,6 +699,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .justify-between {
   justify-content: space-between;
+}
+
+.gap-5 {
+  gap: 1.25rem;
+}
+
+.gap-3 {
+  gap: 0.75rem;
 }
 
 .space-y-0\.5 > :not([hidden]) ~ :not([hidden]) {
@@ -719,6 +743,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-space-y-reverse: 0;
   margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
+}
+
+.space-y-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1rem * var(--tw-space-y-reverse));
 }
 
 .divide-y > :not([hidden]) ~ :not([hidden]) {
@@ -936,6 +966,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .py-5 {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
+}
+
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 .pl-3 {
@@ -1324,6 +1359,22 @@ Ensure the default browser behavior of the `hidden` attribute.
 .peer:active ~ .peer-active\:text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+@media (min-width: 640px) {
+  .sm\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sm\:gap-5 {
+    gap: 1.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 
 @media (min-width: 1024px) {

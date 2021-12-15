@@ -12,6 +12,7 @@ import UserForgetPassword from './pages/Auth/User/ForgetPassword';
 import AdminForgetPassword from './pages/Auth/Admin/ForgetPassword';
 import ManagerForgetPassword from './pages/Auth/Manager/ForgetPassword';
 import Dashboard from './layout/Dashboard';
+import DashboardIndex from './pages/Dashboard/DashboardIndex';
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
               </Route>
             </Route>
             <Route path="dashboard" element={<Dashboard />} >
+              <Route index element={<DashboardIndex />} />
             </Route>
           </Route>
 

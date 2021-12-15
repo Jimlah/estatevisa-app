@@ -8,7 +8,7 @@ const SliceFunction = (name, basePath, payload = null) => {
         `${name}/getAll`,
         async (data, { rejectWithValue, dispatch }) => {
             try {
-                const response = await http.get(basePath);
+                const response = await http.get(`${data.path}`);
                 dispatch(showToast({ message: response.data?.message, type: response.data?.status }));
                 return response.data;
 
