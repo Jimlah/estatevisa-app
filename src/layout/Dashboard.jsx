@@ -1,6 +1,6 @@
 import Navbar from './partials/NavBar';
 import Header from './partials/Header';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate, useMatch } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import http from './../store/baseHttp';
@@ -25,9 +25,24 @@ const Dashboard = () => {
         // eslint-disable-next-line
     }, []);
 
+    const userMatch = useMatch('/user/dashboard');
+    const managerMatch = useMatch('/manager/dashboard');
+    const adminMatch = useMatch('/admin/dashboard');
+
     useEffect(() => {
         if (!user) {
-            navigate('/login');
+
+            if (userMatch) {
+                navigate('/user/auth/login');
+            }
+
+            if (managerMatch) {
+                navigate('/manager/auth/login');
+            }
+
+            if (adminMatch) {
+                navigate('/admin/auth/login');
+            }
         }
 
         // eslint-disable-next-line
