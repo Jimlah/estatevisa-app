@@ -8,14 +8,14 @@ export const loginUser = createAsyncThunk(
         try {
             const response = await http.post(`/${data.path}`, JSON.stringify(data.payload));
             if (response?.data.status === 'success') {
-                dispatch(showToast({ message: response?.data.message, type: response?.data.status }));
-                return response.data;
+                dispatch(showToast({ message: response?.data?.message, type: response?.data?.status }));
+                return response?.data;
             }
-            return rejectWithValue(response.data);
+            return rejectWithValue(response?.data);
 
         } catch (error) {
-            dispatch(showToast({ message: error.response.data.message, type: error.response.data?.type ?? 'error' }));
-            return rejectWithValue(error.response.data);
+            dispatch(showToast({ message: error.response?.data?.message, type: error.response?.data?.type ?? 'error' }));
+            return rejectWithValue(error.response?.data);
         }
     }
 )

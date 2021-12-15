@@ -34,6 +34,7 @@ const ProfileDropDown = () => {
         }
 
         if (adminMatch) {
+            console.log('admin');
             dispatch(logOutUser({ path: 'admin/logout' }));
         }
 

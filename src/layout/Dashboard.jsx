@@ -3,14 +3,30 @@ import Header from './partials/Header';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import http from './../store/baseHttp';
 
 const Dashboard = () => {
 
-    const {token, user} = useSelector(state => state.auth);
+    const { user, token } = useSelector(state => state.auth);
     const navigate = useNavigate();
 
-    useEffect(()=>{
-        if(!user){
+    useEffect(() => {
+        http.interceptors.request.use(
+            config => {
+                if (token) {
+                    config.headers.Authorization = `Bearer ${token}`;
+                }
+                return config;
+            },
+            error => {
+                return Promise.reject(error);
+            }
+        );
+        // eslint-disable-next-line
+    }, []);
+
+    useEffect(() => {
+        if (!user) {
             navigate('/login');
         }
 
