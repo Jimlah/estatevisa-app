@@ -11,7 +11,6 @@ const SliceFunction = (name, basePath, payload = null) => {
                 const response = await http.get(`${data.path}`);
                 dispatch(showToast({ message: response.data?.message, type: response.data?.status }));
                 return response.data;
-
             } catch (error) {
                 dispatch(showToast({ message: error.response.data.message, type: error.response.data.type }));
                 return rejectWithValue(error.response.data);

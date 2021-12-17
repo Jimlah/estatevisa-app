@@ -42,10 +42,10 @@ const ProfileDropDown = () => {
     }
 
     return (
-        <DropDownMenu menu={<Profile firstname={user.first_name} />}>
+        <DropDownMenu menu={<Profile firstname={user?.first_name} />}>
             <div>
                 <div className="w-32 py-2 border-b border-gray-700">
-                    <h3 className="text-sm font-bold tracking-wide">{user.first_name} {user.last_name}</h3>
+                    {user && <h3 className="text-sm font-bold tracking-wide">{user.first_name} {user.last_name}</h3>}
                     <p className="text-xs italic font-semibold text-gray-500 uppercase">{role}</p>
                 </div>
                 <div className="flex flex-col py-2 space-y-1">

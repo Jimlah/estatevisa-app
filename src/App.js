@@ -13,8 +13,12 @@ import AdminForgetPassword from './pages/Auth/Admin/ForgetPassword';
 import ManagerForgetPassword from './pages/Auth/Manager/ForgetPassword';
 import Dashboard from './layout/Dashboard';
 import DashboardIndex from './pages/Dashboard/DashboardIndex';
+import { useSelector } from 'react-redux';
 
 function App() {
+
+  const { user, role } = useSelector(state => state.auth);
+
   return (
     <BrowserRouter>
       <ToastNotification />
@@ -32,6 +36,12 @@ function App() {
                 <Route path="" element={<UserForgetPassword />} />
               </Route>
             </Route>
+            {
+              user && role === 'user' &&
+              <Route path="dashboard" element={<Dashboard />} >
+                <Route index element={<DashboardIndex />} />
+              </Route>
+            }
           </Route>
 
 
@@ -48,9 +58,12 @@ function App() {
                 <Route path="" element={<AdminForgetPassword />} />
               </Route>
             </Route>
-            <Route path="dashboard" element={<Dashboard />} >
-              <Route index element={<DashboardIndex />} />
-            </Route>
+            {
+              user && role === 'admin' &&
+              <Route path="dashboard" element={<Dashboard />} >
+                <Route index element={<DashboardIndex />} />
+              </Route>
+            }
           </Route>
 
 
@@ -65,6 +78,12 @@ function App() {
                 <Route path="" element={<ManagerForgetPassword />} />
               </Route>
             </Route>
+            {
+              user && role === 'manager' &&
+              <Route path="dashboard" element={<Dashboard />} >
+                <Route index element={<DashboardIndex />} />
+              </Route>
+            }
           </Route>
 
 

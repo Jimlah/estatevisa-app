@@ -3,11 +3,12 @@ import Header from './partials/Header';
 import { Outlet, useNavigate, useMatch } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import http, { addBearerToken } from './../store/baseHttp';
+import { addBearerToken } from './../store/baseHttp';
 
 const Dashboard = () => {
 
     const { user, token } = useSelector(state => state.auth);
+
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -19,9 +20,9 @@ const Dashboard = () => {
     const managerMatch = useMatch('/manager/dashboard');
     const adminMatch = useMatch('/admin/dashboard');
 
+    console.log(user)
     useEffect(() => {
         if (!user) {
-
             if (userMatch) {
                 navigate('/user/auth/login');
             }
