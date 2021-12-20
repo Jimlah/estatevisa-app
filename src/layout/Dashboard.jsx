@@ -20,7 +20,6 @@ const Dashboard = () => {
     const managerMatch = useMatch('/manager/dashboard');
     const adminMatch = useMatch('/admin/dashboard');
 
-    console.log(user)
     useEffect(() => {
         if (!user) {
             if (userMatch) {
@@ -32,6 +31,7 @@ const Dashboard = () => {
             }
 
             if (adminMatch) {
+                console.log('admin');
                 navigate('/admin/auth/login');
             }
         }

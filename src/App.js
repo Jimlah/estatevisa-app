@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css';
 import Wrapper from './pages/Main/Wrapper';
 import Login from './pages/Auth/Login';
@@ -13,16 +13,43 @@ import AdminForgetPassword from './pages/Auth/Admin/ForgetPassword';
 import ManagerForgetPassword from './pages/Auth/Manager/ForgetPassword';
 import Dashboard from './layout/Dashboard';
 import DashboardIndex from './pages/Dashboard/DashboardIndex';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import _404 from './pages/_404';
+import http, { addBearerToken } from './store/baseHttp';
+import { clearState } from './services/AuthSlice';
+import { useEffect } from 'react';
 
 function App() {
 
-  const { user, role } = useSelector(state => state.auth);
+  const { user, role, token } = useSelector(state => state.auth);
+  const dispatch = useDispatch();
+
+  const validateUser = async (path) => {
+    addBearerToken(token);
+    try {
+      const response = await http.get(path);
+      if (response?.data.status) {
+        return true;
+      }
+      return false;
+    } catch (error) {
+      dispatch(clearState())
+      return true;
+    }
+  }
+
+  useEffect(() => {
+    if (role === 'admin') {
+      validateUser('/admin/validate-token')
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <BrowserRouter>
       <ToastNotification />
-      <Routes>
+
+      < Routes >
         <Route path="/" element={<Wrapper />} >
           <Route index element={<div>Main </div>} />
 
@@ -79,8 +106,8 @@ function App() {
               </Route>
             </Route>
             {
-              user && role === 'manager' &&
               <Route path="dashboard" element={<Dashboard />} >
+                user && role === 'manager' &&
                 <Route index element={<DashboardIndex />} />
               </Route>
             }
@@ -89,7 +116,11 @@ function App() {
 
 
         </Route>
-        <Route path="*" element={<div>404</div>} />
+        <Route path="*" element={
+          <div className='w-screen h-screen'>
+            <_404 />
+          </div>
+        } />
       </Routes>
     </BrowserRouter >
   )
