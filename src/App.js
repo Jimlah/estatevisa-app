@@ -14,10 +14,10 @@ import ManagerForgetPassword from './pages/Auth/Manager/ForgetPassword';
 import Dashboard from './layout/Dashboard';
 import DashboardIndex from './pages/Dashboard/DashboardIndex';
 import { useSelector, useDispatch } from 'react-redux';
-import _404 from './pages/_404';
 import http, { addBearerToken } from './store/baseHttp';
 import { clearState } from './services/AuthSlice';
 import { useEffect } from 'react';
+import ERROR404 from './pages/404';
 
 function App() {
 
@@ -118,7 +118,7 @@ function App() {
         </Route>
         <Route path="*" element={
           <div className='w-screen h-screen'>
-            <_404 />
+            <ERROR404 />
           </div>
         } />
       </Routes>

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const _404 = () => {
+const ERROR404 = () => {
     return (
         <div className="flex flex-col items-center justify-center w-full h-full space-y-5">
             <p className="text-6xl font-bold text-purple-900 text-opacity-90 drop-shadow-2xl" >
@@ -18,4 +18,4 @@ const _404 = () => {
     )
 }
 
-export default _404;
+export default ERROR404;
