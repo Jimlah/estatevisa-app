@@ -19,7 +19,7 @@ const LandingPage = () => {
                 <LoginModal toggle={toggleLoginModal} modal={loginModal} />
             </nav>
             <div className="flex-1 px-10 py-5">
-                <div className="grid w-full h-full grid-cols-3 gap-10">
+                <div className="grid w-full h-full gap-10 md:grid-cols-3 grid-col-1">
                     <div className="self-end col-span-1">
                         <h2 className="mb-5 text-5xl font-semibold tracking-tighter uppercase">
                             Application for managing your estates.
@@ -31,15 +31,13 @@ const LandingPage = () => {
                             euismod aliquam nunc nisl eu, congue urna.
                         </p>
                     </div>
-                    <div className="relative w-full h-full col-span-2 overflow-hidden ">
-                        <div className='w-full h-full bg-center bg-no-repeat bg-contain' style={{ backgroundImage: `url(${devices})` }} >
-
-                        </div>
+                    <div className="relative hidden w-full h-full overflow-hidden sm:col-span-2 sm:block ">
+                        <div className='w-full h-full bg-center bg-no-repeat bg-contain' style={{ backgroundImage: `url(${devices})` }} />
                     </div>
                 </div>
             </div>
-            <footer className="flex items-center justify-between h-32 px-10">
-                <div className="flex items-center">
+            <footer className="flex flex-col items-start justify-between h-32 px-10 sm:items-center sm:flex-row">
+                <div className="flex flex-col items-start sm:items-center sm:flex-row ">
                     <button className="px-6 py-4 mr-5 font-bold text-white bg-purple-500 rounded-sm shadow-lg shadow-purple-300 hover:bg-purple-600" >
                         Book a demo
                     </button>
