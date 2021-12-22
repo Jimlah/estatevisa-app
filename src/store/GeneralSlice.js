@@ -81,6 +81,7 @@ const SliceFunction = (name, basePath, payload = null) => {
             loading: false,
             error: null,
             data: null,
+            link: null,
         },
         reducers: {},
         extraReducers: {
@@ -91,6 +92,7 @@ const SliceFunction = (name, basePath, payload = null) => {
             [getAll.fulfilled]: (state, action) => {
                 state.loading = false;
                 state.data = action.payload.data;
+                state.links = action.payload.links;
             },
             [getAll.rejected]: (state, action) => {
                 state.loading = false;

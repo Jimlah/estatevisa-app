@@ -48,7 +48,7 @@ const LandingPage = () => {
                     </p>
                 </div>
                 <div>
-                    <p className="text-sm font-medium text-gray-700 text-opacity-50">
+                    <p className="text-sm font-medium text-gray-700 text-opacity-50 capitalize">
                         copyright © 2020 EstateVisa. All rights reserved.
                     </p>
                 </div>

@@ -33,7 +33,7 @@ function Table({ title, head, data, column, paginate }) {
                             {data?.map((item, index) => (
                                 <Row key={index}>
                                     {column?.map((col, i) => (
-                                        <Col key={i}>{item[col]}</Col>
+                                        <Col key={i}>{col(item)}</Col>
                                     ))}
                                 </Row>
                             ))}
@@ -50,13 +50,13 @@ function Table({ title, head, data, column, paginate }) {
                 {
                     paginate && (
                         <div className="flex items-center justify-start p-3 space-x-2">
-                            <button className="p-1 bg-gray-200 rounded-full hover:bg-gray-300">
+                            <button onClick={paginate.prev} className="p-1 bg-gray-200 rounded-full hover:bg-gray-300">
                                 <AiOutlineLeft className="w-6 h-6 text-gray-900" />
                             </button>
                             <span>
                                 1
                             </span>
-                            <button className="p-1 bg-gray-200 rounded-full hover:bg-gray-300">
+                            <button onClick={paginate.next} className="p-1 bg-gray-200 rounded-full hover:bg-gray-300">
                                 <AiOutlineRight className="w-6 h-6 text-gray-900" />
                             </button>
                         </div>

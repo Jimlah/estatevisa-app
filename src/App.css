@@ -1176,6 +1176,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   text-transform: uppercase;
 }
 
+.capitalize {
+  text-transform: capitalize;
+}
+
 .italic {
   font-style: italic;
 }

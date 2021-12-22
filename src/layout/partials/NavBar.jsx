@@ -4,11 +4,14 @@ import { useState } from 'react';
 import NavLink from '../../components/ungrouped/NavLink';
 import { RiAdminFill } from 'react-icons/ri'
 import { AiFillCar } from 'react-icons/ai'
-import { GiOpenGate } from 'react-icons/gi'
+import { GiOpenGate } from 'react-icons/gi';
+import { useSelector } from 'react-redux';
 
 const Navbar = (props) => {
 
     const [smallBar, setSmallBar] = useState(false);
+
+    const { role } = useSelector(state => state.auth);
 
     const handleSmallBar = () => {
         setSmallBar(!smallBar);
@@ -24,24 +27,53 @@ const Navbar = (props) => {
             <div className="flex-1">
                 <h2 className="pl-3 mb-3 text-xs font-bold text-gray-500 uppercase">Pages</h2>
                 <ul className="flex flex-col space-y-2">
-                    <li className="">
-                        <NavLink path="/dashboard" name="Dashboard" Icon={MdDashboard} smallBar={smallBar} />
-                    </li>
-                    <li>
-                        <NavLink path="/dashboard/estates" name="Estates" Icon={MdRealEstateAgent} smallBar={smallBar} />
-                    </li>
-                    <li>
-                        <NavLink path="/dashboard/admins" name="Admins" Icon={RiAdminFill} smallBar={smallBar} />
-                    </li>
-                    <li>
-                        <NavLink path="/dashboard/houses" name="Houses" Icon={BsFillHouseDoorFill} smallBar={smallBar} />
-                    </li>
-                    <li>
-                        <NavLink path="/dashboard/visitors" name="Visitors" Icon={GiOpenGate} smallBar={smallBar} />
-                    </li>
-                    <li>
-                        <NavLink path="/dashboard/visitors" name="Vehicles" Icon={AiFillCar} smallBar={smallBar} />
-                    </li>
+
+                    {
+                        role === "admin" && (
+                            <>
+                                <li className="">
+                                    <NavLink path="/admin/dashboard" name="Dashboard" Icon={MdDashboard} smallBar={smallBar} />
+                                </li>
+                                <li>
+                                    <NavLink path="/admin/dashboard/estates" name="Estates" Icon={MdRealEstateAgent} smallBar={smallBar} />
+                                </li>
+
+                                <li>
+                                    <NavLink path="/admin/dashboard/admins" name="Admins" Icon={RiAdminFill} smallBar={smallBar} />
+                                </li>
+                            </>
+                        )
+                    }
+                    {
+                        role === "manager" && (
+                            <>
+                                <li>
+                                    <NavLink path="/dashboard/houses" name="Houses" Icon={BsFillHouseDoorFill} smallBar={smallBar} />
+                                </li>
+                                <li>
+                                    <NavLink path="/dashboard/visitors" name="Visitors" Icon={GiOpenGate} smallBar={smallBar} />
+                                </li>
+                                <li>
+                                    <NavLink path="/dashboard/vehicles" name="Vehicles" Icon={AiFillCar} smallBar={smallBar} />
+                                </li>
+                            </>
+                        )
+                    }
+                    {
+                        role === "user" && (
+                            <>
+                                <li>
+                                    <NavLink path="/dashboard/houses" name="Houses" Icon={BsFillHouseDoorFill} smallBar={smallBar} />
+                                </li>
+                                <li>
+                                    <NavLink path="/dashboard/visitors" name="Visitors" Icon={GiOpenGate} smallBar={smallBar} />
+                                </li>
+                                <li>
+                                    <NavLink path="/dashboard/vehicles" name="Vehicles" Icon={AiFillCar} smallBar={smallBar} />
+                                </li>
+                            </>
+                        )
+                    }
                 </ul>
             </div>
             <div className={`flex px-3 ${smallBar ? "" : "justify-end"}`}>

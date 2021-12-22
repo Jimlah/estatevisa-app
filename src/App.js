@@ -19,6 +19,8 @@ import { clearState } from './services/AuthSlice';
 import { useEffect } from 'react';
 import ERROR404 from './pages/404';
 import LandingPage from './pages/Landing/LandingPage';
+import EstateCreate from './pages/Estate/EstateCreate';
+import EstateIndex from './pages/Estate/EstateIndex';
 
 function App() {
 
@@ -90,6 +92,14 @@ function App() {
               user && role === 'admin' &&
               <Route path="dashboard" element={<Dashboard />} >
                 <Route index element={<DashboardIndex />} />
+                <Route path='estates'>
+                  <Route index element={<EstateIndex />} />
+                  <Route path='create' element={<EstateCreate />} />
+                </Route>
+                <Route path='admins'>
+                  <Route index element={<DashboardIndex />} />
+                  <Route path='create' element={<DashboardIndex />} />
+                </Route>
               </Route>
             }
           </Route>
