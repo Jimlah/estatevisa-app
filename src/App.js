@@ -18,6 +18,7 @@ import http, { addBearerToken } from './store/baseHttp';
 import { clearState } from './services/AuthSlice';
 import { useEffect } from 'react';
 import ERROR404 from './pages/404';
+import LandingPage from './pages/Landing/LandingPage';
 
 function App() {
 
@@ -51,7 +52,7 @@ function App() {
 
       < Routes >
         <Route path="/" element={<Wrapper />} >
-          <Route index element={<div>Main </div>} />
+          <Route index element={<LandingPage />} />
 
           {/* Normal Users  */}
           <Route path="user">
