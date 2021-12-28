@@ -6,6 +6,7 @@ import { RiAdminFill } from 'react-icons/ri'
 import { AiFillCar } from 'react-icons/ai'
 import { GiOpenGate } from 'react-icons/gi';
 import { useSelector } from 'react-redux';
+import { FaTimes } from 'react-icons/fa';
 
 const Navbar = (props) => {
 
@@ -18,10 +19,13 @@ const Navbar = (props) => {
     }
 
     return (
-        <nav className={`absolute z-40 flex flex-col w-64 h-full p-4 duration-200 ease-in-out transition -translate-x-64 bg-gray-800 lg:static lg:left-auto lg:translate-x-0 lg:top-auto ${smallBar ? "lg:max-w-min" : ""}`}>
-            <div className={`flex mb-10 ${smallBar ? "items-start justify-center" : "px-3"}`}>
+        <nav className={`absolute z-40 flex flex-col w-64 h-full p-4 duration-200 ease-in-out transition  bg-gray-800 lg:static lg:left-auto lg:translate-x-0 lg:top-auto ${smallBar ? "lg:max-w-min" : ""} ${props.isClosed ? "-translate-x-64" : ""}`}>
+            <div className={`flex mb-10 relative ${smallBar ? "items-start justify-center" : "px-3"}`}>
                 <span className="">
                     <MdShield className={"h-8 w-8 text-purple-700"} />
+                </span>
+                <span className='absolute top-0 right-0 cursor-pointer'>
+                    <FaTimes onClick={props.handleMenuClick} className={"h-4 w-4 text-gray-300"} />
                 </span>
             </div>
             <div className="flex-1">
@@ -77,7 +81,7 @@ const Navbar = (props) => {
                 </ul>
             </div>
             <div className={`flex px-3 ${smallBar ? "" : "justify-end"}`}>
-                <button className="text-gray-500" onClick={handleSmallBar}>
+                <button className="hidden text-gray-500 lg:block" onClick={handleSmallBar}>
                     <BsArrowBarLeft className={`h-6 w-6 hover:text-gray-300 transformation ${smallBar ? "rotate-180" : ""}`} />
                 </button>
             </div>
