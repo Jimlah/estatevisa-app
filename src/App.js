@@ -95,6 +95,7 @@ function App() {
                 <Route path='estates'>
                   <Route index element={<EstateIndex />} />
                   <Route path='create' element={<EstateCreate />} />
+                  <Route path=":id/edit" element={<EstateCreate />} />
                 </Route>
                 <Route path='admins'>
                   <Route index element={<DashboardIndex />} />

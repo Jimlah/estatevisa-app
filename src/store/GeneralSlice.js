@@ -22,7 +22,7 @@ const SliceFunction = (name, basePath, payload = null) => {
         `${name}/getById`,
         async (data, { rejectWithValue, dispatch }) => {
             try {
-                const response = await http.get(`${basePath}/${data.path}`);
+                const response = await http.get(`${data.path}`);
                 dispatch(showToast({ message: response.data?.message, type: response.data?.status }));
                 return response.data;
             } catch (error) {
@@ -36,7 +36,7 @@ const SliceFunction = (name, basePath, payload = null) => {
         `${name}/create`,
         async (data, { rejectWithValue, dispatch }) => {
             try {
-                const response = await http.post(basePath, JSON.stringify(data.formData));
+                const response = await http.post(data.path, JSON.stringify(data.payload));
                 dispatch(showToast({ message: response.data?.message, type: response.data?.status }));
                 return response.data;
             } catch (error) {
@@ -51,7 +51,7 @@ const SliceFunction = (name, basePath, payload = null) => {
         `${name}/update`,
         async (data, { rejectWithValue, dispatch }) => {
             try {
-                const response = await http.put(`${basePath}/${data.path}`, JSON.stringify(data.formData));
+                const response = await http.put(`${data.path}`, JSON.stringify(data.payload));
                 dispatch(showToast({ message: response.data?.message, type: response.data?.status }));
                 return response.data;
             } catch (error) {
@@ -65,7 +65,7 @@ const SliceFunction = (name, basePath, payload = null) => {
         `${name}/remove`,
         async (data, { rejectWithValue, dispatch }) => {
             try {
-                const response = await http.delete(`${basePath}/${data.path}`);
+                const response = await http.delete(`${data.path}`);
                 dispatch(showToast({ message: response.data?.message, type: response.data?.status }));
                 return response.data;
             } catch (error) {
@@ -82,6 +82,7 @@ const SliceFunction = (name, basePath, payload = null) => {
             error: null,
             data: null,
             link: null,
+            item: null,
         },
         reducers: {},
         extraReducers: {
@@ -104,7 +105,7 @@ const SliceFunction = (name, basePath, payload = null) => {
             },
             [getById.fulfilled]: (state, action) => {
                 state.loading = false;
-                state.data = action.payload.data;
+                state.item = action.payload;
             },
             [getById.rejected]: (state, action) => {
                 state.loading = false;

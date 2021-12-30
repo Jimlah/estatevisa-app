@@ -14,10 +14,10 @@ const DropDownMenu = ({ menu, children }) => {
 
     return (
         <div className="relative" ref={clickRef}>
-            <button onClick={handleClick} className="flex items-center outline-none focus:outline-none">
+            <button onClick={handleClick} className="z-40 flex items-center outline-none focus:outline-none">
                 {menu}
             </button>
-            <div className={`absolute right-0 px-4 py-3 bg-white rounded-lg shadow ${isOpen ? "" : "hidden"}`}>
+            <div className={`absolute z-50 right-0 px-4 py-3 bg-white rounded-lg shadow ${isOpen ? "" : "hidden"}`}>
                 {children}
             </div>
         </div>
