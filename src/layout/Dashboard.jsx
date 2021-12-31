@@ -21,25 +21,11 @@ const Dashboard = () => {
         // eslint-disable-next-line
     }, []);
 
-    const userMatch = useMatch('/user/dashboard');
-    const managerMatch = useMatch('/manager/dashboard');
-    const adminMatch = useMatch('/admin/dashboard');
 
     useEffect(() => {
         if (!user) {
-            if (userMatch) {
-                navigate('/user/auth/login');
-            }
-
-            if (managerMatch) {
-                navigate('/manager/auth/login');
-            }
-
-            if (adminMatch) {
-                navigate('/admin/auth/login');
-            }
+            navigate('/');
         }
-
         // eslint-disable-next-line
     }, [user]);
 
