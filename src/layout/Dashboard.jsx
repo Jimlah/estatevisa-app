@@ -1,6 +1,6 @@
 import Navbar from './partials/NavBar';
 import Header from './partials/Header';
-import { Outlet, useNavigate, useMatch } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { addBearerToken } from './../store/baseHttp';
