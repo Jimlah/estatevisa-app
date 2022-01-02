@@ -1,6 +1,6 @@
-import Panel from './../../components/ungrouped/Panel';
-import InputField from './../../components/Form/InputField';
-import InputPasswordField from './../../components/Form/InputPasswordField';
+import Panel from '../../components/ungrouped/Panel';
+import InputField from '../../components/Form/InputField';
+import InputPasswordField from '../../components/Form/InputPasswordField';
 import SelectOption from '../../components/Form/SelectOption';
 
 const EstateCreate = () => {

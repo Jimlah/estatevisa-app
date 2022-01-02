@@ -23,6 +23,7 @@ import EstateCreate from './pages/Estate/EstateCreate';
 import EstateIndex from './pages/Estate/EstateIndex';
 import DashboardManagerIndex from './pages/Dashboard/DashboardManagerIndex';
 import DashboardUserIndex from './pages/Dashboard/DashboardUserIndex';
+import HouseIndex from './pages/House/HouseIndex';
 
 function App() {
 
@@ -120,9 +121,18 @@ function App() {
               </Route>
             </Route>
             {
+              user && role === 'manager' &&
               <Route path="dashboard" element={<Dashboard />} >
-                user && role === 'manager' &&
                 <Route index element={<DashboardManagerIndex />} />
+                <Route path='houses'>
+                  <Route index element={<HouseIndex />} />
+                  <Route path='create' element={<EstateCreate />} />
+                  <Route path=":id/edit" element={<EstateCreate />} />
+                </Route>
+                <Route path='admins'>
+                  <Route index element={<DashboardIndex />} />
+                  <Route path='create' element={<DashboardIndex />} />
+                </Route>
               </Route>
             }
           </Route>
