@@ -27,7 +27,7 @@ const Login = () => {
 
     useEffect(() => {
         if (user) {
-            navigate("/manager/admin/dashboard")
+            navigate("/manager/dashboard")
         }
 
         // eslint-disable-next-line react-hooks/exhaustive-deps

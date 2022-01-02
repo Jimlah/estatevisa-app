@@ -21,6 +21,8 @@ import ERROR404 from './pages/404';
 import LandingPage from './pages/Landing/LandingPage';
 import EstateCreate from './pages/Estate/EstateCreate';
 import EstateIndex from './pages/Estate/EstateIndex';
+import DashboardManagerIndex from './pages/Dashboard/DashboardManagerIndex';
+import DashboardUserIndex from './pages/Dashboard/DashboardUserIndex';
 
 function App() {
 
@@ -69,7 +71,7 @@ function App() {
             {
               user && role === 'user' &&
               <Route path="dashboard" element={<Dashboard />} >
-                <Route index element={<DashboardIndex />} />
+                <Route index element={<DashboardUserIndex />} />
               </Route>
             }
           </Route>
@@ -120,7 +122,7 @@ function App() {
             {
               <Route path="dashboard" element={<Dashboard />} >
                 user && role === 'manager' &&
-                <Route index element={<DashboardIndex />} />
+                <Route index element={<DashboardManagerIndex />} />
               </Route>
             }
           </Route>
