@@ -51,14 +51,17 @@ const Navbar = (props) => {
                     {
                         role === "manager" && (
                             <>
-                                <li>
-                                    <NavLink path="/dashboard/houses" name="Houses" Icon={BsFillHouseDoorFill} smallBar={smallBar} />
+                                <li className="">
+                                    <NavLink path="/manager/dashboard" name="Dashboard" Icon={MdDashboard} smallBar={smallBar} />
                                 </li>
                                 <li>
-                                    <NavLink path="/dashboard/visitors" name="Visitors" Icon={GiOpenGate} smallBar={smallBar} />
+                                    <NavLink path="/manager/dashboard/houses" name="Houses" Icon={BsFillHouseDoorFill} smallBar={smallBar} />
                                 </li>
                                 <li>
-                                    <NavLink path="/dashboard/vehicles" name="Vehicles" Icon={AiFillCar} smallBar={smallBar} />
+                                    <NavLink path="/manager/dashboard/visitors" name="Visitors" Icon={GiOpenGate} smallBar={smallBar} />
+                                </li>
+                                <li>
+                                    <NavLink path="/manager/dashboard/vehicles" name="Vehicles" Icon={AiFillCar} smallBar={smallBar} />
                                 </li>
                             </>
                         )
@@ -66,14 +69,17 @@ const Navbar = (props) => {
                     {
                         role === "user" && (
                             <>
-                                <li>
-                                    <NavLink path="/dashboard/houses" name="Houses" Icon={BsFillHouseDoorFill} smallBar={smallBar} />
+                                <li className="">
+                                    <NavLink path="/user/dashboard" name="Dashboard" Icon={MdDashboard} smallBar={smallBar} />
                                 </li>
                                 <li>
-                                    <NavLink path="/dashboard/visitors" name="Visitors" Icon={GiOpenGate} smallBar={smallBar} />
+                                    <NavLink path="/user/dashboard/houses" name="Houses" Icon={BsFillHouseDoorFill} smallBar={smallBar} />
                                 </li>
                                 <li>
-                                    <NavLink path="/dashboard/vehicles" name="Vehicles" Icon={AiFillCar} smallBar={smallBar} />
+                                    <NavLink path="/user/dashboard/visitors" name="Visitors" Icon={GiOpenGate} smallBar={smallBar} />
+                                </li>
+                                <li>
+                                    <NavLink path="/user/dashboard/vehicles" name="Vehicles" Icon={AiFillCar} smallBar={smallBar} />
                                 </li>
                             </>
                         )

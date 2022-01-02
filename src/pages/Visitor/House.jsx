@@ -1,6 +1,6 @@
 import { Outlet } from "react-router"
 
-const Estate = () => {
+const House = () => {
     return (
         <div className="w-full h-full">
             <Outlet />
@@ -8,4 +8,4 @@ const Estate = () => {
     )
 }
 
-export default Estate
+export default House
