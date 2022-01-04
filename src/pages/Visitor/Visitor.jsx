@@ -1,6 +1,6 @@
 import { Outlet } from "react-router"
 
-const House = () => {
+const Visitor = () => {
     return (
         <div className="w-full h-full">
             <Outlet />
@@ -8,4 +8,4 @@ const House = () => {
     )
 }
 
-export default House
+export default Visitor

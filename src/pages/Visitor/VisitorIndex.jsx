@@ -9,13 +9,13 @@ import usePaginate from '../../hooks/usePaginate';
 import ActionButton from "../../components/dropdown/ActionButton";
 import Modal from "../../components/Modal/Modal";
 
-const HouseIndex = () => {
+const VisitorIndex = () => {
 
     const { token } = useSelector(state => state.auth);
     const { data } = useSelector(state => state.estate);
     const dispatch = useDispatch();
 
-    const { url, ...paginate } = usePaginate('manager/houses');
+    const { url, ...paginate } = usePaginate('manager/visitors');
 
     useEffect(() => {
         addBearerToken(token);
@@ -24,22 +24,22 @@ const HouseIndex = () => {
     }, [url]);
 
     const head = [
-        "Code",
-        "Category",
-        "Estate Name",
+        "Name",
+        "email",
+        "phone",
         "Created At",
         "Actions",
     ];
     const [isModal, setIsModal] = useState(false);
 
     const column = [
-        (e) => e.code,
-        (e) => e.category,
-        (e) => e?.estate?.name,
+        (e) => `${e.first_name} ${e.last_name}`,
+        (e) => e.email,
+        (e) => e?.phone,
         (e) => e.created_at,
         (e) => <ActionButton
-            view={`/manager/dashboard/houses/${e.id}`}
-            edit={`/manager/dashboard/houses/${e.id}/edit`}
+            view={`/manager/dashboard/visitors/${e.id}`}
+            edit={`/manager/dashboard/visitors/${e.id}/edit`}
             del={() => setIsModal(true)}
         />,
     ]
@@ -81,4 +81,4 @@ const HouseIndex = () => {
     )
 }
 
-export default HouseIndex;
+export default VisitorIndex;
