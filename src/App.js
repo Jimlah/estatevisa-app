@@ -26,7 +26,9 @@ import DashboardUserIndex from './pages/Dashboard/DashboardUserIndex';
 import HouseIndex from './pages/House/HouseIndex';
 import HouseCreate from './pages/House/HouseCreate';
 import VisitorIndex from './pages/Visitor/VisitorIndex';
-import VehicleIndex from './pages/Visitor/VisitorIndex';
+import UserVisitorIndex from './pages/User/UserVisitor/UserVisitorIndex';
+import VehicleIndex from './pages/Vehicle/VehicleIndex';
+
 
 function App() {
 
@@ -76,6 +78,23 @@ function App() {
               user && role === 'user' &&
               <Route path="dashboard" element={<Dashboard />} >
                 <Route index element={<DashboardUserIndex />} />
+
+                {/* <Route path='houses'>
+                  <Route index element={<HouseIndex />} />
+                  <Route path='create' element={<HouseCreate />} />
+                  <Route path=":id/edit" element={<HouseCreate />} />
+                </Route> */}
+
+                <Route path='visitors'>
+                  <Route index element={<UserVisitorIndex />} />
+                  <Route path='create' element={<EstateCreate />} />
+                  <Route path=":id/edit" element={<EstateCreate />} />
+                </Route>
+                {/* <Route path='vehicles'>
+                  <Route index element={<VehicleUserIndex />} />
+                  <Route path='create' element={<EstateCreate />} />
+                  <Route path=":id/edit" element={<EstateCreate />} />
+                </Route> */}
               </Route>
             }
           </Route>

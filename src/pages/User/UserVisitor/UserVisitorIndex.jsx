@@ -1,21 +1,22 @@
+import { useEffect, useState } from "react";
 import { MdAdd } from "react-icons/md";
-import Table from "../../components/Tables/Table";
-import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { addBearerToken } from '../../store/baseHttp';
-import usePaginate from '../../hooks/usePaginate';
-import ActionButton from "../../components/dropdown/ActionButton";
-import Modal from "../../components/Modal/Modal";
-import { getAllVisitors } from "../../services/VisitorSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import ActionButton from "../../../components/dropdown/ActionButton";
+import Modal from "../../../components/Modal/Modal";
+import Table from "../../../components/Tables/Table";
+import usePaginate from "../../../hooks/usePaginate";
+import { getAllVisitors } from "../../../services/VisitorSlice";
+import { addBearerToken } from "../../../store/baseHttp";
 
-const VisitorIndex = () => {
+
+const UserVisitorIndex = () => {
 
     const { token } = useSelector(state => state.auth);
     const { data } = useSelector(state => state.visitor);
     const dispatch = useDispatch();
 
-    const { url, ...paginate } = usePaginate('manager/visitors');
+    const { url, ...paginate } = usePaginate('user/visitors');
 
     useEffect(() => {
         addBearerToken(token);
@@ -83,4 +84,4 @@ const VisitorIndex = () => {
     )
 }
 
-export default VisitorIndex;
+export default UserVisitorIndex;
