@@ -7,41 +7,41 @@ import { addBearerToken } from '../../store/baseHttp';
 import usePaginate from '../../hooks/usePaginate';
 import ActionButton from "../../components/dropdown/ActionButton";
 import Modal from "../../components/Modal/Modal";
-import { getAllVehicles } from "../../services/VehicleSlice";
+import { getAllVisitors } from "../../services/VisitorSlice";
 
-const VehicleIndex = () => {
+const VisitorIndex = () => {
 
     const { token } = useSelector(state => state.auth);
-    const { data } = useSelector(state => state.vehicle);
+    const { data } = useSelector(state => state.visitor);
     const dispatch = useDispatch();
 
-    const { url, ...paginate } = usePaginate('manager/vehicles');
+    const { url, ...paginate } = usePaginate('manager/visitors');
 
     useEffect(() => {
         addBearerToken(token);
-        dispatch(getAllVehicles({ path: url }));
+        dispatch(getAllVisitors({ path: url }));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [url]);
 
     const head = [
         "Name",
-        "Type",
-        "License Plate",
-        'Model',
-        'Color',
+        "Email",
+        "Phone Number",
+        'Gender',
+        'Created At',
         "Actions",
     ];
     const [isModal, setIsModal] = useState(false);
 
     const column = [
-        (e) => e.name,
-        (e) => e.type,
-        (e) => e.license_plate,
-        (e) => e.model,
-        (e) => e.color,
+        (e) => `${e.first_name} ${e.last_name}`,
+        (e) => e.email,
+        (e) => e.phone,
+        (e) => e.gender,
+        (e) => e.create_at,
         (e) => <ActionButton
-            view={`/manager/dashboard/vehicles/${e.id}`}
-            edit={`/manager/dashboard/vehicles/${e.id}/edit`}
+            view={`/manager/dashboard/visitors/${e.id}`}
+            edit={`/manager/dashboard/visitors/${e.id}/edit`}
             del={() => setIsModal(true)}
         />,
     ]
@@ -57,7 +57,7 @@ const VehicleIndex = () => {
                 </Link>
             </div>
             <Table
-                title="List of Vehicles"
+                title="List of Visitors"
                 head={head}
                 data={data}
                 column={column}
@@ -83,4 +83,4 @@ const VehicleIndex = () => {
     )
 }
 
-export default VehicleIndex;
+export default VisitorIndex;
