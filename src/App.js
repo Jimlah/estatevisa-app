@@ -129,7 +129,7 @@ function App() {
                 <Route path='houses'>
                   <Route index element={<HouseIndex />} />
                   <Route path='create' element={<HouseCreate />} />
-                  <Route path=":id/edit" element={<EstateCreate />} />
+                  <Route path=":id/edit" element={<HouseCreate />} />
                 </Route>
                 <Route path='visitors'>
                   <Route index element={<VisitorIndex />} />

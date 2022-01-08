@@ -75,6 +75,7 @@ const SliceFunction = (name, basePath, payload = null) => {
         }
     );
 
+
     const slice = createSlice({
         name,
         initialState: {
@@ -84,7 +85,36 @@ const SliceFunction = (name, basePath, payload = null) => {
             link: null,
             item: null,
         },
-        reducers: {},
+        reducers: {
+            clearState: (state, value) => {
+                switch (value.payload) {
+                    case 'loading':
+                        state.loading = false;
+                        break;
+                    case 'error':
+                        state.error = null;
+                        break;
+                    case 'data':
+                        state.data = null;
+                        break;
+                    case 'link':
+                        state.link = null;
+                        break;
+                    case 'item':
+                        state.item = null;
+                        break;
+                    default:
+                        state = {
+                            loading: false,
+                            error: null,
+                            data: null,
+                            link: null,
+                            item: null,
+                        };
+                        break;
+                }
+            }
+        },
         extraReducers: {
             [getAll.pending]: (state, action) => {
                 state.loading = true;
@@ -147,13 +177,16 @@ const SliceFunction = (name, basePath, payload = null) => {
         }
     })
 
+    const { clearState } = slice.actions;
+
     return {
         slice,
         getAll,
         getById,
         create,
         update,
-        remove
+        remove,
+        clearState
     };
 
 }

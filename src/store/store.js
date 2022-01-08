@@ -6,13 +6,15 @@ import { FLUSH, PAUSE, PERSIST, persistReducer, PURGE, REGISTER, REHYDRATE } fro
 import { combineReducers } from "redux";
 import { dashboardSlice } from "../services/DashboardSlice";
 import { estateSlice } from "../services/EstateSLice";
+import { houseSlice } from "../services/HouseSlice";
 
 
 const reducer = combineReducers({
     auth: authSelector,
     toast: toastSelector,
     dashboard: dashboardSlice.reducer,
-    estate: estateSlice.reducer
+    estate: estateSlice.reducer,
+    house: houseSlice.reducer,
 });
 
 const persistConfig = {
