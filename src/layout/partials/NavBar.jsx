@@ -72,9 +72,9 @@ const Navbar = (props) => {
                                 <li className="">
                                     <NavLink path="/user/dashboard" name="Dashboard" Icon={MdDashboard} smallBar={smallBar} />
                                 </li>
-                                <li>
+                                {/* <li>
                                     <NavLink path="/user/dashboard/houses" name="Houses" Icon={BsFillHouseDoorFill} smallBar={smallBar} />
-                                </li>
+                                </li> */}
                                 <li>
                                     <NavLink path="/user/dashboard/visitors" name="Visitors" Icon={GiOpenGate} smallBar={smallBar} />
                                 </li>
