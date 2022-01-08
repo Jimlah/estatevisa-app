@@ -1,21 +1,22 @@
+import { useEffect, useState } from "react";
 import { MdAdd } from "react-icons/md";
-import Table from "../../components/Tables/Table";
-import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { addBearerToken } from '../../store/baseHttp';
-import usePaginate from '../../hooks/usePaginate';
-import ActionButton from "../../components/dropdown/ActionButton";
-import Modal from "../../components/Modal/Modal";
-import { getAllVehicles } from "../../services/VehicleSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import ActionButton from "../../../components/dropdown/ActionButton";
+import Modal from "../../../components/Modal/Modal";
+import Table from "../../../components/Tables/Table";
+import usePaginate from "../../../hooks/usePaginate";
+import { getAllVehicles } from "../../../services/VehicleSlice";
+import { addBearerToken } from "../../../store/baseHttp";
 
-const VehicleIndex = () => {
+
+const UserVehicleIndex = () => {
 
     const { token } = useSelector(state => state.auth);
     const { data } = useSelector(state => state.vehicle);
     const dispatch = useDispatch();
 
-    const { url, ...paginate } = usePaginate('manager/vehicles');
+    const { url, ...paginate } = usePaginate('user/vehicles');
 
     useEffect(() => {
         addBearerToken(token);
@@ -83,4 +84,4 @@ const VehicleIndex = () => {
     )
 }
 
-export default VehicleIndex;
+export default UserVehicleIndex;
