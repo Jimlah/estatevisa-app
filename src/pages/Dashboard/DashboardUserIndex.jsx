@@ -25,23 +25,23 @@ const DashboardUserIndex = () => {
         <div>
             <div className='grid sm:grid-cols-2 md:grid-cols-4 sm:gap-5 '>
                 <Board
-                    title="Estate Count"
+                    title="House Count"
                     icon={<FiUsers className='w-6 h-6' />}
-                    value={data?.estate_count}
-                    path={'/user'}
+                    value={data?.houses_count}
+                    path={'/houses'}
                     color='blue'
                 />
                 <Board
-                    title="User Count"
+                    title="Vehicles Count"
                     icon={<FiUsers className='w-6 h-6' />}
-                    value={data?.user_count}
+                    value={data?.vehicles_count}
                     path={'/user'}
                     color='purple'
                 />
                 <Board
-                    title="Manager Count"
+                    title="Visitors Count"
                     icon={<FiUsers className='w-6 h-6' />}
-                    value={data?.manager_count}
+                    value={data?.visitors_count}
                     path={'/user'}
                     color='indigo'
                 />
