@@ -7,6 +7,8 @@ import { combineReducers } from "redux";
 import { dashboardSlice } from "../services/DashboardSlice";
 import { estateSlice } from "../services/EstateSLice";
 import { houseSlice } from "../services/HouseSlice";
+import { vehicleSlice } from "../services/VehicleSlice";
+import { visitorSlice } from "../services/VisitorSlice";
 
 
 const reducer = combineReducers({
@@ -15,6 +17,8 @@ const reducer = combineReducers({
     dashboard: dashboardSlice.reducer,
     estate: estateSlice.reducer,
     house: houseSlice.reducer,
+    vehicle: vehicleSlice.reducer,
+    visitor: visitorSlice.reducer
 });
 
 const persistConfig = {

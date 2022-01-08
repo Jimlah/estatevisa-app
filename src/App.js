@@ -26,6 +26,7 @@ import DashboardUserIndex from './pages/Dashboard/DashboardUserIndex';
 import HouseIndex from './pages/House/HouseIndex';
 import HouseCreate from './pages/House/HouseCreate';
 import VisitorIndex from './pages/Visitor/VisitorIndex';
+import VehicleIndex from './pages/Visitor/VisitorIndex';
 
 function App() {
 
@@ -133,6 +134,11 @@ function App() {
                 </Route>
                 <Route path='visitors'>
                   <Route index element={<VisitorIndex />} />
+                  <Route path='create' element={<EstateCreate />} />
+                  <Route path=":id/edit" element={<EstateCreate />} />
+                </Route>
+                <Route path='vehicles'>
+                  <Route index element={<VehicleIndex />} />
                   <Route path='create' element={<EstateCreate />} />
                   <Route path=":id/edit" element={<EstateCreate />} />
                 </Route>
