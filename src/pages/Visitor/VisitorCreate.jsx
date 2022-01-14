@@ -1,17 +1,15 @@
 import Panel from '../../components/ungrouped/Panel';
 import InputField from '../../components/Form/InputField';
-import InputPasswordField from '../../components/Form/InputPasswordField';
-import SelectOption from '../../components/Form/SelectOption';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addBearerToken } from '../../store/baseHttp';
-import Select from '../../components/Form/Select';
-import Option from '../../components/Form/Option';
 import SubmitButton from '../../components/Form/SubmitButton';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import { clearVisitorState, createVisitor, getVisitorById, updateVisitor } from '../../services/VisitorSlice';
 import { getAllEstates } from '../../services/EstateSLice';
+import SearchSelect from '../../components/Form/SearchSelect';
+import Option from '../../components/Form/Option';
 
 const EstateCreate = () => {
 
@@ -72,7 +70,6 @@ const EstateCreate = () => {
             setValue('email', item.email);
             setValue('phone', item.phone);
             setValue('address', item.address);
-            // setValue('estate_id', item.estate?.id);
         }
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -86,6 +83,19 @@ const EstateCreate = () => {
                 <InputField label="Email" name="email" register={register('email')} error={error?.email} />
                 <InputField label="Phone Number" name="phone" register={register('phone')} error={error?.phone} />
                 <InputField label="Address" name="address" register={register('address')} error={error?.address} />
+                <SearchSelect
+                    label="Estate"
+                    name="estate_id"
+                    error={error?.estate_id}
+                    register={register('estate_id')}
+                >
+
+                    {
+                        data?.map((estate, index) => (
+                            <Option key={index} value={estate.id} >{estate.name}</Option>
+                        ))
+                    }
+                </SearchSelect>
                 <SubmitButton loading={loading} > Create </SubmitButton>
             </form>
         </Panel>
