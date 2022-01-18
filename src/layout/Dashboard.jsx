@@ -18,11 +18,6 @@ const Dashboard = () => {
 
     useEffect(() => {
         addBearerToken(token);
-        // eslint-disable-next-line
-    }, []);
-
-
-    useEffect(() => {
         if (!user) {
             navigate('/');
         }

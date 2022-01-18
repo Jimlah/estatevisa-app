@@ -3,6 +3,7 @@ import { FaUserAlt } from 'react-icons/fa';
 import { Link, useMatch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logOutUser } from '../../services/AuthSlice';
+import { addBearerToken } from '../../store/baseHttp';
 
 const Profile = ({ firstname }) => {
     return (
@@ -20,22 +21,19 @@ const Profile = ({ firstname }) => {
 const ProfileDropDown = () => {
     const dispatch = useDispatch();
 
-    const userMatch = useMatch('/user/dashboard');
-    const managerMatch = useMatch('/manager/dashboard');
-    const adminMatch = useMatch('/admin/dashboard');
-
-    const { user, role } = useSelector(state => state.auth);
+    const { user, role, token } = useSelector(state => state.auth);
 
     const handleLogout = () => {
-        if (userMatch) {
+        addBearerToken(token);
+        if (role === 'user') {
             dispatch(logOutUser({ path: 'user/logout' }));
         }
 
-        if (managerMatch) {
+        if (role === 'manager') {
             dispatch(logOutUser({ path: 'manager/logout' }));
         }
 
-        if (adminMatch) {
+        if (role === 'admin') {
             dispatch(logOutUser({ path: 'admin/logout' }));
         }
 

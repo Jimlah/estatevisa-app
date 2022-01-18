@@ -2,7 +2,7 @@ import { MdAdd } from "react-icons/md";
 import Table from "../../components/Tables/Table";
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getAllEstates } from "../../services/EstateSLice";
+import { getAllEstates, removeEstate } from "../../services/EstateSLice";
 import { useSelector, useDispatch } from 'react-redux';
 import { addBearerToken } from './../../store/baseHttp';
 import usePaginate from './../../hooks/usePaginate';
@@ -31,6 +31,7 @@ const EstateIndex = () => {
         "Actions",
     ];
     const [isModal, setIsModal] = useState(false);
+    const [delId, setDelId] = useState(null);
 
     const column = [
         (e) => <Link to={`/admin/dashboard/estates/${e.id}`}>{e.name}</Link>,
@@ -40,9 +41,18 @@ const EstateIndex = () => {
         (e) => <ActionButton
             view={`/admin/dashboard/estates/${e.id}`}
             edit={`/admin/dashboard/estates/${e.id}/edit`}
-            del={() => setIsModal(true)}
+            del={() => {
+                setIsModal(true);
+                setDelId(e.id);
+            }}
         />,
     ]
+
+    const del = () => {
+        setIsModal(false);
+        dispatch(removeEstate({ path: `/admin/estates/${delId}` }));
+        dispatch(getAllEstates({ path: url }));
+    }
 
     return (
         <div className="w-full h-full" >
@@ -64,13 +74,13 @@ const EstateIndex = () => {
             <Modal
                 isVisible={isModal}
                 title="Delete Estate"
-                content="Are you sure you want to delete this estate?"
+                content={"Are you sure you want to delete this estate?"}
                 footer={
                     <>
-                        <button className="px-4 py-2 font-bold text-white bg-purple-500 rounded hover:bg-purple-600">
+                        <button onClick={del} className="px-4 py-2 font-bold text-white bg-purple-500 rounded hover:bg-purple-600">
                             Delete
                         </button>
-                        <button className="px-4 py-2 font-bold text-white bg-purple-500 rounded hover:bg-purple-600">
+                        <button onClick={() => { setIsModal(false) }} className="px-4 py-2 font-bold text-white bg-purple-500 rounded hover:bg-purple-600">
                             Cancel
                         </button>
                     </>
