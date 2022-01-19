@@ -17,6 +17,8 @@ const EstateIndex = () => {
 
     const { url, ...paginate } = usePaginate('admin/estates');
 
+    console.log(data);
+
     useEffect(() => {
         addBearerToken(token);
         dispatch(getAllEstates({ path: url }));
