@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import './App.css';
 import Wrapper from './pages/Main/Wrapper';
 import Login from './pages/Auth/Login';
 import ForgetPassword from './pages/Auth/ForgetPassword';
@@ -29,6 +28,7 @@ import VisitorIndex from './pages/Visitor/VisitorIndex';
 import UserVisitorIndex from './pages/User/UserVisitor/UserVisitorIndex';
 import VehicleIndex from './pages/Vehicle/VehicleIndex';
 import UserVehicleIndex from './pages/User/UserVehicle/UserVehicleIndex';
+import './App.css';
 
 
 function App() {
