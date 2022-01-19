@@ -7,14 +7,14 @@ import SubmitButton from '../../components/Form/SubmitButton';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import { clearVisitorState, createVisitor, getVisitorById, updateVisitor } from '../../services/VisitorSlice';
-import { getAllEstates } from '../../services/EstateSLice';
+import { getAllUsers } from '../../services/UsersSlice';
 import SearchSelect from '../../components/Form/SearchSelect';
 import Option from '../../components/Form/Option';
 
 const EstateCreate = () => {
 
     const { error, loading, item } = useSelector(state => state.visitor);
-    const { data } = useSelector(state => state.estate);
+    const { data } = useSelector(state => state.users);
     const { token } = useSelector(state => state.auth);
     const dispatch = useDispatch();
     const { register, handleSubmit, setValue } = useForm();
@@ -39,7 +39,7 @@ const EstateCreate = () => {
 
     useEffect(() => {
         addBearerToken(token);
-        dispatch(getAllEstates({ path: 'manager/estates' }));
+        dispatch(getAllUsers({ path: 'manager/users' }));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -84,14 +84,14 @@ const EstateCreate = () => {
                 <InputField label="Phone Number" name="phone" register={register('phone')} error={error?.phone} />
                 <InputField label="Address" name="address" register={register('address')} error={error?.address} />
                 <SearchSelect
-                    label="Estate"
-                    name="estate_id"
-                    error={error?.estate_id}
-                    register={register('estate_id')}
+                    label="Select User"
+                    name="user_id"
+                    error={error?.user_id}
+                    register={register('user_id')}
                 >
                     {
-                        data?.map((estate, index) => (
-                            <Option key={index} value={estate.id} >{estate.name}</Option>
+                        data?.map((user, index) => (
+                            <Option key={index} value={user.first_name} >{user.first_name} {user.last_name}</Option>
                         ))
                     }
                 </SearchSelect>
