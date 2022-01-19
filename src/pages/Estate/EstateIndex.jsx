@@ -2,12 +2,13 @@ import { MdAdd } from "react-icons/md";
 import Table from "../../components/Tables/Table";
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getAllEstates } from "../../services/EstateSLice";
+import { getAllEstates, removeEstate } from "../../services/EstateSLice";
 import { useSelector, useDispatch } from 'react-redux';
 import { addBearerToken } from './../../store/baseHttp';
 import usePaginate from './../../hooks/usePaginate';
 import ActionButton from "../../components/dropdown/ActionButton";
 import Modal from "../../components/Modal/Modal";
+import DeleteModal from '../../components/Modal/DeleteModal';
 
 const EstateIndex = () => {
 
@@ -16,8 +17,6 @@ const EstateIndex = () => {
     const dispatch = useDispatch();
 
     const { url, ...paginate } = usePaginate('admin/estates');
-
-    console.log(data);
 
     useEffect(() => {
         addBearerToken(token);
@@ -33,6 +32,14 @@ const EstateIndex = () => {
         "Actions",
     ];
     const [isModal, setIsModal] = useState(false);
+    const [estateId, setEstateId] = useState(null);
+
+
+
+    const handleDelete = (id) => {
+        dispatch(removeEstate({ path: '/admin/estates/' + estateId }));
+        setIsModal(false);
+    }
 
     const column = [
         (e) => <Link to={`/admin/dashboard/estates/${e.id}`}>{e.name}</Link>,
@@ -63,21 +70,10 @@ const EstateIndex = () => {
                 column={column}
                 paginate={paginate}
             />
-            <Modal
-                isVisible={isModal}
-                title="Delete Estate"
-                content="Are you sure you want to delete this estate?"
-                footer={
-                    <>
-                        <button className="px-4 py-2 font-bold text-white bg-purple-500 rounded hover:bg-purple-600">
-                            Delete
-                        </button>
-                        <button className="px-4 py-2 font-bold text-white bg-purple-500 rounded hover:bg-purple-600">
-                            Cancel
-                        </button>
-                    </>
-                }
-                onClose={() => setIsModal(false)}
+            <DeleteModal
+                modalState={isModal}
+                deleteFunc={handleDelete}
+                delId={estateId}
             />
         </div>
     )
