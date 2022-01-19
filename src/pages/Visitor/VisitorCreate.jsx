@@ -89,7 +89,6 @@ const EstateCreate = () => {
                     error={error?.estate_id}
                     register={register('estate_id')}
                 >
-
                     {
                         data?.map((estate, index) => (
                             <Option key={index} value={estate.id} >{estate.name}</Option>
