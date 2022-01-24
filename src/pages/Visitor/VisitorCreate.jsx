@@ -8,8 +8,9 @@ import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import { clearVisitorState, createVisitor, getVisitorById, updateVisitor } from '../../services/VisitorSlice';
 import { getAllUsers } from '../../services/UsersSlice';
-import SearchSelect from '../../components/Form/SearchSelect';
+import Select from '../../components/Form/Select';
 import Option from '../../components/Form/Option';
+import { Input } from 'postcss';
 
 const EstateCreate = () => {
 
@@ -83,18 +84,23 @@ const EstateCreate = () => {
                 <InputField label="Email" name="email" register={register('email')} error={error?.email} />
                 <InputField label="Phone Number" name="phone" register={register('phone')} error={error?.phone} />
                 <InputField label="Address" name="address" register={register('address')} error={error?.address} />
-                <SearchSelect
+                <Select
                     label="Select User"
                     name="user_id"
                     error={error?.user_id}
                     register={register('user_id')}
+
                 >
+                    {/* <option key='' value="" >
+                        
+                    </option> */}
+                    <input label="Search Here" name=""  />
                     {
                         data?.map((user, index) => (
                             <Option key={index} value={user.first_name} >{user.first_name} {user.last_name}</Option>
                         ))
                     }
-                </SearchSelect>
+                </Select>
                 <SubmitButton loading={loading} > Create </SubmitButton>
             </form>
         </Panel>
