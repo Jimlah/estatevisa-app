@@ -22,6 +22,7 @@ const EstateCreate = () => {
     const { id } = useParams();
 
     const onSubmit = (formData) => {
+        addBearerToken(token)
         if (!id) {
             dispatch(createHouse({
                 path: 'manager/houses',
