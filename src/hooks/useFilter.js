@@ -5,7 +5,7 @@ const useFilter = (filter, data) => {
     const [search, setSearch] = useState('');
 
     useEffect(() => {
-        const filtered = data.filter(item => {
+        const filtered = data?.filter(item => {
             return item[filter].toLowerCase().includes(search.toLowerCase());
         });
         setFilteredData(filtered);
