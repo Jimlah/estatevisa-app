@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import './App.css';
 import Wrapper from './pages/Main/Wrapper';
 import Login from './pages/Auth/Login';
 import ForgetPassword from './pages/Auth/ForgetPassword';
@@ -26,9 +25,11 @@ import DashboardUserIndex from './pages/Dashboard/DashboardUserIndex';
 import HouseIndex from './pages/House/HouseIndex';
 import HouseCreate from './pages/House/HouseCreate';
 import VisitorIndex from './pages/Visitor/VisitorIndex';
+import VisitorCreate from './pages/Visitor/VisitorCreate';
 import UserVisitorIndex from './pages/User/UserVisitor/UserVisitorIndex';
 import VehicleIndex from './pages/Vehicle/VehicleIndex';
 import UserVehicleIndex from './pages/User/UserVehicle/UserVehicleIndex';
+import './App.css';
 
 
 function App() {
@@ -154,7 +155,7 @@ function App() {
                 </Route>
                 <Route path='visitors'>
                   <Route index element={<VisitorIndex />} />
-                  <Route path='create' element={<EstateCreate />} />
+                  <Route path='create' element={<VisitorCreate />} />
                   <Route path=":id/edit" element={<EstateCreate />} />
                 </Route>
                 <Route path='vehicles'>

@@ -9,6 +9,7 @@ import { estateSlice } from "../services/EstateSLice";
 import { houseSlice } from "../services/HouseSlice";
 import { vehicleSlice } from "../services/VehicleSlice";
 import { visitorSlice } from "../services/VisitorSlice";
+import { usersSlice } from "../services/UsersSlice";
 
 
 const reducer = combineReducers({
@@ -18,7 +19,8 @@ const reducer = combineReducers({
     estate: estateSlice.reducer,
     house: houseSlice.reducer,
     vehicle: vehicleSlice.reducer,
-    visitor: visitorSlice.reducer
+    visitor: visitorSlice.reducer,
+    users: usersSlice.reducer
 });
 
 const persistConfig = {
